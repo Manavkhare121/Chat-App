@@ -8,10 +8,10 @@ const ProjectSchema=new Schema({
         trim:true,
         unique:true
     },
-    users:{
+    users:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
-    }
+    }]
 },{
     timestamps:true
 })

@@ -49,6 +49,8 @@ export const loginController=async(req,res)=>{
     });
     
     res.status(201).send({ user, token });
+    
+
 
 } catch (error) {
     res.status(400).send(error.message);

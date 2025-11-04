@@ -1,0 +1,10 @@
+import {Router} from 'express'
+import {body} from 'express-validator'
+import { createproject } from '../controllers/project.controller.js';
+import *as authMiddleware from '../middleware/auth.middleware.js'
+const router=Router();
+router.post('/create',authMiddleware.authUser,body('name').isString().withMessage('Name is required'),createproject)
+
+
+
+export default router;

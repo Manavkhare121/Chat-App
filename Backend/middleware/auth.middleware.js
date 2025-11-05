@@ -10,7 +10,7 @@ export const authUser = async (req, res, next) => {
     return res.status(401).json({ error: "Unauthorized User - No token provided" });
   }
 
-  console.log("🪪 Incoming token:", token);
+ 
 
   const isBlackListed = await redisClient.get(token);
   if (isBlackListed) {

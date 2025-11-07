@@ -12,7 +12,7 @@ router.post(
   createproject
 );
 
-router.post('/all', authMiddleware.authUser, getAllProject);
+router.get('/all', authMiddleware.authUser, getAllProject);
 
 router.put(
   '/add-user',

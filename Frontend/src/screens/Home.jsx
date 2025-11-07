@@ -23,27 +23,27 @@ const Home = () => {
       .then((res) => {
         console.log(res);
         setIsModalOpen(false);
-        // Refresh list after creation
-        // axios
-        //   .get("/projects/all")
-        //   .then((res) => setProject(res.data.projects))
-        //   .catch((err) => console.log(err));
+        axios
+          .get("/projects/all")
+          .then((res) => setProject(res.data.projects))
+          .catch((err) => console.log(err));
       })
       .catch((error) => {
         console.log(error);
       });
+      
   }
 
-//   useEffect(() => {
-//     axios
-//       .get("/projects/all")
-//       .then((res) => {
-//         setProject(res.data.projects);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   }, []);
+  useEffect(() => {
+    axios
+      .get("/projects/all")
+      .then((res) => {
+        setProject(res.data.projects);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <main className="home-container">

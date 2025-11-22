@@ -22,7 +22,7 @@ io.use(async (socket, next) => {
     if (!token) {
       return next(new Error('Authorization error'));
     }
-    socket.project=await ProjectModel.findById(projectId)
+    socket.project=await ProjectModel.findById(projectId);
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
      if (!decoded) {
@@ -38,10 +38,11 @@ io.use(async (socket, next) => {
 
 io.on('connection', socket => {
   console.log("a User Connected")
-  socket.join(socket.project._id)
+  socket.roomId=socket.project._id.toString()
+  socket.join(socket.roomId)
   socket.on('project-message',data=>{
     console.log(data)
-    socket.broadcast.to(socket.project._id).emit('project-message',data)
+    socket.broadcast.to(socket.roomId).emit('project-message',data)
   })
   socket.on('event', data => { /* … */ });
   socket.on('disconnect', () => { /* … */ });

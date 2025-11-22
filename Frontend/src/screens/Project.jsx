@@ -68,7 +68,7 @@ const Project = () => {
     const send = () => {
       sendMessage("project-message", {
         message,
-        sender: user,
+        // sender:user,
       });
       // setMessages((prev) => [...prev, { sender: user, message }]);
       setMessage("");
@@ -92,6 +92,7 @@ const Project = () => {
     initializeSocket(project._id);
     recieveMessage("project-message", (data) => {
       console.log(data);
+      setMessages(prev => [...prev, data]);
     });
 
     axios

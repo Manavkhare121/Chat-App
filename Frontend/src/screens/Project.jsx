@@ -31,11 +31,11 @@ const Project = () => {
     const [message, setMessage] = useState("");
   const [users, setUsers] = useState([]);
     const [messages, setMessages] = useState([]);
-  //   const [fileTree, setFileTree] = useState({});
-  //   const [currentFile, setCurrentFile] = useState(null);
-  //   const [openFiles, setOpenFiles] = useState([]);
+    const [fileTree, setFileTree] = useState({});
+    const [currentFile, setCurrentFile] = useState(null);
+    const [openFiles, setOpenFiles] = useState([]);
   //   const [webContainer, setWebContainer] = useState(null);
-  //   const [iframeUrl, setIframeUrl] = useState(null);
+    const [iframeUrl, setIframeUrl] = useState(null);
   //   const [runProcess, setRunProcess] = useState(null);
 
     const messageBox = useRef(null);
@@ -204,7 +204,7 @@ const Project = () => {
       </section>
 
       {/* RIGHT PANEL */}
-      {/* <section className="right-panel">
+      <section className="right-panel">
         
         <div className="explorer">
           {Object.keys(fileTree).map((file, i) => (
@@ -218,10 +218,10 @@ const Project = () => {
               {file}
             </button>
           ))}
-        </div> */}
+        </div>
 
       {/* CODE EDITOR */}
-      {/* <div className="editor">
+      <div className="editor">
           <div className="open-files">
             {openFiles.map((file, i) => (
               <button
@@ -234,7 +234,7 @@ const Project = () => {
             ))}
           </div>
 
-          <button
+          {/* <button
             className="run-btn"
             onClick={async () => {
               await webContainer.mount(fileTree);
@@ -257,9 +257,9 @@ const Project = () => {
             }}
           >
             Run
-          </button> */}
+          </button>  */}
 
-      {/* <div className="code-area">
+       {/* <div className="code-area">
             {fileTree[currentFile] && (
               <pre className="hljs">
                 <code
@@ -284,11 +284,11 @@ const Project = () => {
                 />
               </pre>
             )}
-          </div>
+          </div> */}
         </div>
 
         {/* PREVIEW IFRAME */}
-      {/* {iframeUrl && (
+       {iframeUrl && (
           <div className="preview">
             <input
               value={iframeUrl}
@@ -297,8 +297,9 @@ const Project = () => {
             />
             <iframe src={iframeUrl}></iframe>
           </div>
-        )}
-      </section> */}
+        )} 
+       
+       </section>
 
       {/* ADD COLLABORATOR MODAL */}
       {isModalOpen && (

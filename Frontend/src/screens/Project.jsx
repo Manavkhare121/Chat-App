@@ -5,7 +5,7 @@ import axios from "../config/axios";
 import { initializeSocket,recieveMessage,sendMessage } from "../config/socket.js";
 import Markdown from "markdown-to-jsx";
 import hljs from "highlight.js";
-// import { getWebContainer } from "../config/webcontainer";
+import { getWebContainer } from "../config/webContainer.js";
 import "../styles/Project.css";
 
 function SyntaxHighlightedCode(props) {
@@ -31,12 +31,10 @@ const Project = () => {
     const [message, setMessage] = useState("");
   const [users, setUsers] = useState([]);
     const [messages, setMessages] = useState([]);
-    const [fileTree, setFileTree] = useState({"index.js": { file: { contents: "console.log('hello')" } },
-  "app.js": { file: { contents: "function App() {}" } }
-});
+    const [fileTree, setFileTree] = useState({});
     const [currentFile, setCurrentFile] = useState(null);
     const [openFiles, setOpenFiles] = useState([]);
-  //   const [webContainer, setWebContainer] = useState(null);
+    const [webContainer, setWebContainer] = useState(null);
     const [iframeUrl, setIframeUrl] = useState(null);
   //   const [runProcess, setRunProcess] = useState(null);
 
@@ -103,10 +101,19 @@ const Project = () => {
 };
   useEffect(() => {
      const socket = initializeSocket(project._id);
+     if(!webContainer){
+      getWebContainer().then(container=>{
+        setWebContainer(container)
+        console.log("container started")
+      })
+     }
     
   recieveMessage("project-message", (data) => {
-    if (data.fileTree) {
-  setFileTree(data.fileTree);
+    const message=JSON.parse(data.message)
+    console.log(message)
+    webContainer?.mount(message.fileTree)
+    if (message.fileTree) {
+  setFileTree(message.fileTree);
 }
     setMessages((prev) => [...prev, data]);
   });
@@ -241,7 +248,7 @@ const Project = () => {
             ))}
           </div>
 
-          {/* <button
+          <button
             className="run-btn"
             onClick={async () => {
               await webContainer.mount(fileTree);
@@ -264,7 +271,7 @@ const Project = () => {
             }}
           >
             Run
-          </button>  */}
+          </button> 
 
        <div className="code-area">
             {fileTree[currentFile] && (
@@ -295,7 +302,7 @@ const Project = () => {
         </div>
 
         {/* PREVIEW IFRAME */}
-       {/* {iframeUrl && (
+       {iframeUrl && (
           <div className="preview">
             <input
               value={iframeUrl}
@@ -304,7 +311,7 @@ const Project = () => {
             />
             <iframe src={iframeUrl}></iframe>
           </div>
-        )}  */}
+        )} 
        
        </section>
 

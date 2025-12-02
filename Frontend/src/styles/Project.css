@@ -390,37 +390,11 @@
 .ai-message code {
   scrollbar-width: none;
 }
-
-.right-panel {
-  flex: 1;
-  background: #f1f5f9;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.explorer {
-  background: #e2e8f0;
-  padding: 8px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.explorer button {
-  background: white;
-  border: 1px solid #cbd5e1;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
 .editor {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+
 }
 
 .open-files {
@@ -448,24 +422,22 @@
   overflow: auto;
   background: #1e1e2f;
   padding: 10px;
-  border-radius: 6px;
+  color:white;
 }
 
  /* =================== RIGHT PANEL LAYOUT =================== */
 
 .right-panel {
-  flex: 1;
+ flex: 1;
   height: 100vh;
-  display: grid;
-  grid-template-columns: 180px auto;
-  background: #dce2eb; 
   overflow: hidden;
+  display: flex;
 }
 
 /* =================== FILE EXPLORER =================== */
 
 .explorer {
-  background: #d1d6df;  /* same light tone as screenshot */
+  background: #d1d6df; 
   padding: 14px 8px;
   display: flex;
   flex-direction: column;
@@ -510,7 +482,7 @@
 .open-files {
   display: flex;
   background: #cdd3dd;
-  padding: 6px 10px;
+  padding: 18px 10px;
   gap: 8px;
   border-bottom: 1px solid #b7bcc5;
 }
@@ -533,15 +505,7 @@
 
 /* =================== CODE EDITOR =================== */
 
-.code-area {
-  flex: 1;
-  background: #1b1f2a; /* Dark editor background (screenshot) */
-  color: #f8fafc;
-  padding: 16px;
-  overflow: auto;
-  border-radius: 0 0 6px 6px;
-  font-size: 14px;
-}
+
 
 /* highlight.js overrides */
 .code-area pre,
@@ -566,15 +530,15 @@
 
 .run-btn {
   position: absolute;
-  top: 8px;
-  right: 12px;
+  bottom:20px;
+  right:1rem;
   padding: 6px 14px;
   background: #16a34a;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  z-index: 50;
+ 
 }
 
 .run-btn:hover {
@@ -585,7 +549,7 @@
 
 .preview {
   background: white;
-  height: 40%;
+  height: 100%;
   border-top: 1px solid #b7bcc5;
   display: flex;
   flex-direction: column;

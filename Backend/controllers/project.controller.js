@@ -1,6 +1,6 @@
 import { validationResult } from "express-validator";
 import { ProjectModel } from "../models/project.model.js";
-import { createProject, getAllProjectByUserId,addUsersToProject,GetProjectById } from "../services/project.service.js";
+import { createProject, getAllProjectByUserId,addUsersToProject,GetProjectById,updateProjectFileTree  } from "../services/project.service.js";
 import { UserModel } from "../models/user.model.js";
 import mongoose, { mongo } from "mongoose";
 
@@ -102,7 +102,7 @@ export const updateFileTree = async (req, res) => {
 
         const { projectId, fileTree } = req.body;
 
-        const project = await updateFileTree({
+        const project = await updateProjectFileTree ({
             projectId,
             fileTree
         })

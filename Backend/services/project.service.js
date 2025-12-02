@@ -87,7 +87,7 @@ export const GetProjectById=async ({projectId})=>{
     return project
 }
 
-export const updateFileTree = async ({ projectId, fileTree }) => {
+export const updateProjectFileTree  = async ({ projectId, fileTree }) => {
     if (!projectId) {
         throw new Error("projectId is required")
     }

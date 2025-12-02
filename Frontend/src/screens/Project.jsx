@@ -247,8 +247,7 @@ const Project = () => {
               </button>
             ))}
           </div>
-
-          <button
+          <div className="buttons"><button
             className="run-btn"
             onClick={async () => {
               await webContainer.mount(fileTree);
@@ -272,6 +271,8 @@ const Project = () => {
           >
             Run
           </button> 
+          </div>
+          
 
        <div className="code-area">
             {fileTree[currentFile] && (

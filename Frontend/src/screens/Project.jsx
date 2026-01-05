@@ -109,12 +109,20 @@ const Project = () => {
      }
     
   recieveMessage("project-message", (data) => {
-    const message=JSON.parse(data.message)
-    console.log(message)
-    webContainer?.mount(message.fileTree)
-    if (message.fileTree) {
-  setFileTree(message.fileTree);
-}
+    let parsed = null;
+    try {
+      if (typeof data.message === "string") parsed = JSON.parse(data.message);
+      else parsed = data.message;
+    } catch (e) {
+      parsed = null;
+    }
+
+    if (parsed && parsed.fileTree) {
+      console.log(parsed);
+      webContainer?.mount(parsed.fileTree);
+      setFileTree(parsed.fileTree);
+    }
+
     setMessages((prev) => [...prev, data]);
   });
 
